@@ -5,7 +5,7 @@ namespace Services\User\Domains\User\Jobs;
 use Foundation\AbstractJob;
 use Services\User\Data\Entities\User\User;
 use Services\User\Data\Entities\User\Values\Email;
-use EntityManager;
+use Services\User\Domains\User\Repositories\UserRepository;
 
 /**
  * A Domain Service which coordinates how the user is registered with the application
@@ -26,7 +26,7 @@ class RegisterUserJob extends AbstractJob
         $this->password  = $password;
     }
 
-    public function handle(EntityManager $em)
+    public function handle(UserRepository $repository)
     {
         $user = new User;
         $user->firstname = $this->firstname;
@@ -36,8 +36,7 @@ class RegisterUserJob extends AbstractJob
         $email = new Email($this->email);
         $user->email = $email;
 
-        $em::persist($user);
-        $em::flush();
+        $repository->create($user);
 
         return $user;
     }

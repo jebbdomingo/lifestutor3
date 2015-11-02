@@ -6,6 +6,10 @@ use Config;
 use Lang;
 use View;
 use Illuminate\Support\ServiceProvider;
+use Doctrine\ORM\Mapping\ClassMetadata;
+use Services\User\Domains\User\Repositories\DoctrineUserRepository;
+use Services\User\Domains\User\Repositories\UserRepository;
+use Services\User\Data\Entities\User\User;
 
 class UserServiceProvider extends ServiceProvider
 {
@@ -22,6 +26,13 @@ class UserServiceProvider extends ServiceProvider
 		App::register('Services\User\Providers\RouteServiceProvider');
 
 		$this->registerNamespaces();
+
+		$this->app->bind(UserRepository::class, function($app) {
+			return new DoctrineUserRepository(
+				$app['em'],
+				new ClassMetaData(User::class)
+			);
+		});
 	}
 
 	/**
