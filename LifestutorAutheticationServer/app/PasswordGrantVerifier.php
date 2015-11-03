@@ -10,8 +10,8 @@ class PasswordGrantVerifier
     public function verify($username, $password)
     {
         $credentials = [
-            'email'    => $username,
-            'password' => $password,
+            'contact_email' => $username,
+            'password'      => $password,
         ];
 
         // $user = EntityManager::getRepository('Services\User\Data\Entities\User\User')->find($username);

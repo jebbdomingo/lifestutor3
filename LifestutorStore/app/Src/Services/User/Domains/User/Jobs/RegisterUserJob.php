@@ -4,8 +4,8 @@ namespace Services\User\Domains\User\Jobs;
 
 use Foundation\AbstractJob;
 use Services\User\Data\Entities\User\User;
-use Services\User\Data\Entities\User\Values\Email;
-use Services\User\Domains\User\Repositories\UserRepository;
+use Services\User\Data\Entities\User\Values\Contact;
+use Services\User\Data\Repositories\UserRepository;
 
 /**
  * A Domain Service which coordinates how the user is registered with the application
@@ -32,9 +32,7 @@ class RegisterUserJob extends AbstractJob
         $user->firstname = $this->firstname;
         $user->lastname  = $this->lastname;
         $user->password  = bcrypt($this->password);
-
-        $email = new Email($this->email);
-        $user->email = $email;
+        $user->contact   = new Contact($this->email);
 
         $repository->create($user);
 

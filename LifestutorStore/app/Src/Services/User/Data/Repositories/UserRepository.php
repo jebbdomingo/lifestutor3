@@ -1,6 +1,6 @@
 <?php
 
-namespace Services\User\Domains\User\Repositories;
+namespace Services\User\Data\Repositories;
 
 interface UserRepository
 {

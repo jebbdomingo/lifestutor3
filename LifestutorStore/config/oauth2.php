@@ -27,13 +27,16 @@ return [
     |
     */
 
+
+    /*
+    This is used in Authentication Server, no need to implement here in store app.
     'grant_types' => [
         'password' => [
             'class'            => '\League\OAuth2\Server\Grant\PasswordGrant',
             'callback'         => '\App\PasswordGrantVerifier@verify',
             'access_token_ttl' => 3600
         ]
-    ],
+    ],*/
 
     /*
     |--------------------------------------------------------------------------

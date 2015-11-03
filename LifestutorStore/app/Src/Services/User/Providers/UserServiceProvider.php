@@ -7,8 +7,8 @@ use Lang;
 use View;
 use Illuminate\Support\ServiceProvider;
 use Doctrine\ORM\Mapping\ClassMetadata;
-use Services\User\Domains\User\Repositories\DoctrineUserRepository;
-use Services\User\Domains\User\Repositories\UserRepository;
+use Services\User\Data\Repositories\DoctrineUserRepository;
+use Services\User\Data\Repositories\UserRepository;
 use Services\User\Data\Entities\User\User;
 
 class UserServiceProvider extends ServiceProvider

@@ -4,9 +4,9 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-use Services\User\Data\Entities\User\Values\Email;
+use Services\User\Data\Entities\User\Values\Contact;
 
-class EmailTest extends TestCase
+class ContactTest extends TestCase
 {
     /**
      * Should require an email address
@@ -17,7 +17,7 @@ class EmailTest extends TestCase
     {
         $this->setExpectedException('Exception');
 
-        $member = new Email();
+        $member = new Contact();
 
         //$this->assertEquals($member->getFirstName(), 'Dela Cruz');
     }
@@ -31,7 +31,7 @@ class EmailTest extends TestCase
     {
         $this->setExpectedException('Assert\AssertionFailedException');
 
-        $member = new Email('this_is_not_a_valid_email');
+        $member = new Contact('this_is_not_a_valid_email');
     }
 
     /**
@@ -41,8 +41,8 @@ class EmailTest extends TestCase
      */
     public function testShouldAcceptValidEmail()
     {
-        $email = new Email('name@domain.com');
+        $email = new Contact('name@domain.com');
 
-        $this->assertInstanceOf('Services\User\Data\Entities\User\Values\Email', $email);
+        $this->assertInstanceOf('Services\User\Data\Entities\User\Values\Contact', $email);
     }
 }

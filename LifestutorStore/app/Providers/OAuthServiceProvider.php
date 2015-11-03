@@ -5,18 +5,18 @@ namespace App\Providers;
 use Dingo\Api\Auth\Auth;
 use Dingo\Api\Auth\Provider\OAuth2;
 use Illuminate\Support\ServiceProvider;
-use EntityManager;
+use Services\User\Data\Repositories\UserRepository;
 
 class OAuthServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(UserRepository $repository)
     {
-        $this->app[Auth::class]->extend('oauth', function ($app) {
+        $this->app[Auth::class]->extend('oauth', function ($app) use ($repository) {
             $provider = new OAuth2($app['oauth2-server.authorizer']->getChecker());
 
-            $provider->setUserResolver(function ($id) {
+            $provider->setUserResolver(function ($id) use ($repository) {
                 // Logic to return a user by their ID.
-                return EntityManager::getRepository('Services\User\Data\Entities\User\User')->find($id);
+                return $repository->get($id);
             });
 
             /*$provider->setClientResolver(function ($id) {

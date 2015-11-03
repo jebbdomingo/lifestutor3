@@ -22,10 +22,7 @@
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', function ($api) {
-    $api->post('users', [
-    	'middleware' => 'api.auth',
-    	'uses'       => 'Services\User\Http\Controllers\UserController@store'
-    ]);
+    $api->post('users', 'Services\User\Http\Controllers\UserController@store');
 
     $api->get('users/{id}', [
     	'middleware' => 'api.auth',

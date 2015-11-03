@@ -5,7 +5,8 @@ namespace Services\User\Domains\User\Jobs;
 use Foundation\AbstractJob;
 use Services\User\Data\Entities\User;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Services\User\Domains\User\Repositories\UserRepository;
+use Services\User\Data\Repositories\UserRepository;
+use Foundation\Assertion;
 
 /**
  * @author Jebb Domingo <jebb.domingo@gmail.com>
@@ -38,12 +39,12 @@ class GetUserJob extends AbstractJob
      */
     public function handle(UserRepository $repository)
     {
-        //$user = $em::getRepository('Services\User\Data\Entities\User\User')->find($this->id);
+        // Currently authenticated user
+        //$user = app('Dingo\Api\Auth\Auth')->user();
+
         $user = $repository->get($this->id);
 
-        if (empty($user)) {
-            return $this->response->errorNotFound("User with ID '{$this->id}'' not found");
-        }
+        Assertion::entityExists($user, "User with ID '{$this->id}' not found");
 
         return $user;
     }

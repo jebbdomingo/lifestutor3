@@ -20,9 +20,9 @@ class User extends BaseEntity
     protected $id;
 
     /**
-     * @ORM\Embedded(class = "Services\User\Data\Entities\User\Values\Email", columnPrefix = false)
+     * @ORM\Embedded(class = "Services\User\Data\Entities\User\Values\Contact")
      */
-    protected $email;
+    protected $contact;
 
     /**
      * @ORM\column(type="string")

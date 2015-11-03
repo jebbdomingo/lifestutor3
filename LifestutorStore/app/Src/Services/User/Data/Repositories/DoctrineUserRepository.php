@@ -1,6 +1,6 @@
 <?php
 
-namespace Services\User\Domains\User\Repositories;
+namespace Services\User\Data\Repositories;
 
 use Doctrine\ORM\EntityRepository;
 
@@ -27,7 +27,9 @@ class DoctrineUserRepository extends EntityRepository implements UserRepository
      * @return array
      */
     public function all()
-    {}
+    {
+        return $this->findAll();
+    }
 
     /**
      * [create description]

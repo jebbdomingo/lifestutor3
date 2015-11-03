@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Auth;
 class PasswordGrantVerifier
 {
     /**
-     * [verify description]
+     * This is used in Authentication Server, no need to implement here in store app.
      *
      * @param  string $username
      * @param  string $password
      *
      * @return boolean|user
      */
-    public function verify($username, $password)
+    /*public function verify($username, $password)
     {
         $credentials = [
             'email'    => $username,
@@ -29,5 +29,5 @@ class PasswordGrantVerifier
         }
 
         return false;
-    }
+    }*/
 }

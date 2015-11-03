@@ -10,7 +10,7 @@ use Foundation\Data\BaseValue;
 /**
  * @ORM\Embeddable
  */
-class Email extends BaseValue
+class Contact extends BaseValue
 {
     /**
      * @ORM\Column(type="string", unique=true)
@@ -27,15 +27,5 @@ class Email extends BaseValue
         Assertion::email($email);
 
         $this->email = $email;
-    }
-
-    /**
-     * [__toString description]
-     *
-     * @return mixed
-     */
-    public function __toString()
-    {
-        return $this->email;
     }
 }

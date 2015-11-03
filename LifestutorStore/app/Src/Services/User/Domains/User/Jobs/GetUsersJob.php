@@ -4,7 +4,7 @@ namespace Services\User\Domains\User\Jobs;
 
 use Foundation\AbstractJob;
 use Services\User\Data\Entities\User;
-use EntityManager;
+use Services\User\Data\Repositories\UserRepository;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -19,8 +19,8 @@ class GetUsersJob extends AbstractJob
      *
      * @return User
      */
-    public function handle(EntityManager $em)
+    public function handle(UserRepository $repository)
     {
-        return $em::getRepository('Services\User\Data\Entities\User\User')->findAll();
+        return $repository->all();
     }
 }
