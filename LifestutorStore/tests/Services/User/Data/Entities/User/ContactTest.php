@@ -17,9 +17,7 @@ class ContactTest extends TestCase
     {
         $this->setExpectedException('Exception');
 
-        $member = new Contact();
-
-        //$this->assertEquals($member->getFirstName(), 'Dela Cruz');
+        $contact = new Contact();
     }
 
     /**
@@ -31,7 +29,7 @@ class ContactTest extends TestCase
     {
         $this->setExpectedException('Assert\AssertionFailedException');
 
-        $member = new Contact('this_is_not_a_valid_email');
+        $contact = new Contact('this_is_not_a_valid_email');
     }
 
     /**

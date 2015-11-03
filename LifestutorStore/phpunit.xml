@@ -12,8 +12,11 @@
         <testsuite name="Application Test Suite">
             <directory>./tests/</directory>
         </testsuite>
-        <testsuite name="User Entity Test Suite">
-            <directory>./tests/Services/User/Data/Entities/User/</directory>
+        <testsuite name="User Service Test Suite">
+            <directory>./tests/Services/User/</directory>
+        </testsuite>
+        <testsuite name="Inventory Service Test Suite">
+            <directory>./tests/Services/Inventory/</directory>
         </testsuite>
     </testsuites>
     <filter>

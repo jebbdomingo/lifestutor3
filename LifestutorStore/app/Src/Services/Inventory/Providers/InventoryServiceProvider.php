@@ -6,6 +6,10 @@ use Config;
 use Lang;
 use View;
 use Illuminate\Support\ServiceProvider;
+use Doctrine\ORM\Mapping\ClassMetadata;
+use Services\Inventory\Data\Repositories\DoctrineItemRepository;
+use Services\Inventory\Data\Repositories\ItemRepository;
+use Services\Inventory\Data\Entities\Item\Item;
 
 class InventoryServiceProvider extends ServiceProvider
 {
@@ -22,6 +26,13 @@ class InventoryServiceProvider extends ServiceProvider
 		App::register('Services\Inventory\Providers\RouteServiceProvider');
 
 		$this->registerNamespaces();
+
+		$this->app->bind(ItemRepository::class, function($app) {
+			return new DoctrineItemRepository(
+				$app['em'],
+				new ClassMetaData(Item::class)
+			);
+		});
 	}
 
 	/**
