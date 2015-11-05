@@ -11,7 +11,9 @@
         "laravel-doctrine/orm": "^1.0",
         "dingo/api": "1.0.x@dev",
         "lucadegasperi/oauth2-server-laravel": "5.0.*",
-        "beberlei/assert": "^2.4"
+        "beberlei/assert": "^2.4",
+        "laravel-doctrine/acl": "1.0.*",
+        "laravel-doctrine/migrations": "1.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

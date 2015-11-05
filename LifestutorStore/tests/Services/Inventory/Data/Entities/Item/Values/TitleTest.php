@@ -29,6 +29,6 @@ class TitleTest extends TestCase
     {
         $title = new Title('Test Item');
 
-        $this->assertSame('Test Item', sprintf($title));
+        $this->assertSame('Test Item', $title->value);
     }
 }

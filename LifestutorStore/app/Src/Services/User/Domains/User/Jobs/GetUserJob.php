@@ -8,6 +8,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Services\User\Data\Repositories\UserRepository;
 use Foundation\Assertion;
 
+use Services\User\Data\Roles\Role;
+
 /**
  * @author Jebb Domingo <jebb.domingo@gmail.com>
  */
@@ -41,6 +43,10 @@ class GetUserJob extends AbstractJob
     {
         // Currently authenticated user
         //$user = app('Dingo\Api\Auth\Auth')->user();
+        //$user->hasRoleByName('Member');
+        //$user->hasRole($user->getRoles()->toArray());
+        
+        Assertion::currentUserIsAdmin('You have no permission to create an Item');
 
         $user = $repository->get($this->id);
 

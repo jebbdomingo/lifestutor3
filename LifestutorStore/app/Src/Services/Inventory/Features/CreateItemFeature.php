@@ -3,6 +3,7 @@ namespace Services\Inventory\Features;
 
 use Illuminate\Http\Request;
 use Foundation\AbstractFeature;
+use Services\Inventory\Domains\Item\Jobs\ValidateItemCreationInputJob;
 use Services\Inventory\Domains\Item\Jobs\CreateItemJob;
 use Services\Inventory\Domains\Item\Jobs\RespondWithJsonJob;
 
@@ -22,6 +23,7 @@ class CreateItemFeature extends AbstractFeature
 	 */
     public function handle(Request $request)
     {
+        $item = $this->run(ValidateItemCreationInputJob::class);
         $item = $this->run(CreateItemJob::class, $request);
 
         return $this->run(RespondWithJsonJob::class, ['item' => $item]);

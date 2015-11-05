@@ -25,22 +25,22 @@ class Item extends BaseEntity
     protected $id;
 
     /**
-     * @ORM\Embedded(class = "Services\Inventory\Data\Entities\Item\Values\Title", columnPrefix = false)
+     * @ORM\Embedded(class = "Services\Inventory\Data\Entities\Item\Values\Title")
      */
     protected $title;
 
     /**
-     * @ORM\Embedded(class = "Services\Inventory\Data\Entities\Item\Values\Description", columnPrefix = false)
+     * @ORM\Embedded(class = "Services\Inventory\Data\Entities\Item\Values\Description")
      */
     protected $description;
 
     /**
-     * @ORM\Embedded(class = "Services\Inventory\Data\Entities\Item\Values\Price", columnPrefix = false)
+     * @ORM\Embedded(class = "Services\Inventory\Data\Entities\Item\Values\Price")
      */
     protected $price;
 
     /**
-     * @ORM\Embedded(class = "Services\Inventory\Data\Entities\Item\Values\Quantity", columnPrefix = false)
+     * @ORM\Embedded(class = "Services\Inventory\Data\Entities\Item\Values\Quantity")
      */
     protected $quantity;
 

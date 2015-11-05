@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use EntityManager;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        /*
+         * Register enum type, prevents error in Doctrine schema-tool
+         */
+        $em = EntityManager::getFacadeRoot();
+        $conn = $em->getConnection();
+        $conn->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
     }
 
     /**

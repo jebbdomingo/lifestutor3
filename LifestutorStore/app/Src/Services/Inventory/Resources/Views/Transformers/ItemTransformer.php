@@ -11,10 +11,10 @@ class ItemTransformer extends TransformerAbstract
     {
         return [
             'id'          => (int) $item->id,
-            'title'       => sprintf($item->title),
-            'description' => sprintf($item->description),
-            'price'       => (float) sprintf($item->price),
-            'quantity'    => (int) sprintf($item->quantity)
+            'title'       => $item->title->value,
+            'description' => $item->description->value,
+            'price'       => (float) $item->price->value,
+            'quantity'    => (int) $item->quantity->value
         ];
     }
 }

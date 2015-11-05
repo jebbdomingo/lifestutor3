@@ -15,7 +15,7 @@ class Title extends BaseValue
     /**
      * @ORM\Column(type="string")
      */
-    protected $title;
+    protected $value;
 
     /**
      * Cosntructor
@@ -27,7 +27,7 @@ class Title extends BaseValue
         Assertion::notEmpty($value);
         Assertion::string($value);
 
-        $this->title = $value;
+        $this->value = $value;
     }
 
     /**
@@ -37,6 +37,6 @@ class Title extends BaseValue
      */
     public function __toString()
     {
-        return $this->title;
+        return $this->value;
     }
 }

@@ -15,7 +15,7 @@ class Price extends BaseValue
     /**
      * @ORM\Column(type="float")
      */
-    protected $price;
+    protected $value;
 
     /**
      * Cosntructor
@@ -26,7 +26,7 @@ class Price extends BaseValue
     {
         Assertion::float($value);
         
-        $this->price = $value;
+        $this->value = $value;
     }
 
     /**
@@ -36,6 +36,6 @@ class Price extends BaseValue
      */
     public function __toString()
     {
-        return (string) $this->price;
+        return $this->value;
     }
 }

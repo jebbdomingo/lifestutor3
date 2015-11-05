@@ -151,9 +151,11 @@ return [
         Caffeinated\Modules\ModulesServiceProvider::class,
 
         /*
-         * Doctrine ORM
+         * Doctrine
          */
         LaravelDoctrine\ORM\DoctrineServiceProvider::class,
+        LaravelDoctrine\ACL\AclServiceProvider::class,
+        LaravelDoctrine\Migrations\MigrationsServiceProvider::class,
 
         /*
          * Dingo API

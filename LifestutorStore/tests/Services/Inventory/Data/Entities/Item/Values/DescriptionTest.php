@@ -16,6 +16,6 @@ class DescriptionTest extends TestCase
     {
         $description = new Description('Lorem ipsum');
 
-        $this->assertSame('Lorem ipsum', sprintf($description));
+        $this->assertSame('Lorem ipsum', $description->value);
     }
 }

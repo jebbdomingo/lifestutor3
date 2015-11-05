@@ -15,7 +15,7 @@ class Description extends BaseValue
     /**
      * @ORM\Column(type="string")
      */
-    protected $description;
+    protected $value;
 
     /**
      * Cosntructor
@@ -26,16 +26,16 @@ class Description extends BaseValue
     {
         Assertion::string($value);
         
-        $this->description = $value;
+        $this->value = $value;
     }
 
     /**
-     * [__toString description]
+     * [__toString value]
      *
      * @return string
      */
     public function __toString()
     {
-        return $this->description;
+        return $this->value;
     }
 }

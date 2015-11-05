@@ -8,6 +8,8 @@ class Assertion extends BaseAssertion
 {
     protected static $notFoundExceptionClass = 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException';
 
+    protected static $accessDeniedExceptionClass = 'Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException';
+
     /**
      * Assert that the entity exists
      *
@@ -16,7 +18,7 @@ class Assertion extends BaseAssertion
      * 
      * @return void
      * 
-     * @throws \Assert\AssertionFailedException
+     * @throws Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public static function entityExists($entity, $message = null)
     {
@@ -27,6 +29,54 @@ class Assertion extends BaseAssertion
             );
 
             throw new self::$notFoundExceptionClass($message);
+        }
+    }
+
+    /**
+     * [currentUserIsAdmin description]
+     *
+     * @param  string $message [optional]
+     *
+     * @return void
+     *
+     * @throws Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
+     */
+    public static function currentUserIsAdmin($message = null)
+    {
+        // Currently authenticated user
+        $user = app('Dingo\Api\Auth\Auth')->user();
+
+        if (!$user->hasRoleByName('Admin')) {
+            $message = sprintf(
+                $message ?: 'User "%s" does not have Admin Role',
+                self::stringify($user)
+            );
+
+            throw new self::$accessDeniedExceptionClass($message);
+        }
+    }
+
+    /**
+     * [currentUserIsAdmin description]
+     *
+     * @param  string $message [optional]
+     *
+     * @return void
+     *
+     * @throws Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
+     */
+    public static function currentUserIsMember($message = null)
+    {
+        // Currently authenticated user
+        $user = app('Dingo\Api\Auth\Auth')->user();
+
+        if (!$user->hasRoleByName('Member')) {
+            $message = sprintf(
+                $message ?: 'User "%s" does not have Member Role',
+                self::stringify($user)
+            );
+
+            throw new self::$accessDeniedExceptionClass($message);
         }
     }
 }

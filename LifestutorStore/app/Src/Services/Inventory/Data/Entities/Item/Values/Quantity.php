@@ -15,7 +15,7 @@ class Quantity extends BaseValue
     /**
      * @ORM\Column(type="integer")
      */
-    protected $quantity;
+    protected $value;
 
     /**
      * Cosntructor
@@ -26,7 +26,7 @@ class Quantity extends BaseValue
     {
         Assertion::integer($value);
 
-        $this->quantity = $value;
+        $this->value = $value;
     }
 
     /**
@@ -36,6 +36,6 @@ class Quantity extends BaseValue
      */
     public function __toString()
     {
-        return (string) $this->quantity;
+        return $this->value;
     }
 }
