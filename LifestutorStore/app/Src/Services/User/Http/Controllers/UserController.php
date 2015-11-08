@@ -34,6 +34,11 @@ class UserController extends Controller
         return $this->serve(GetUserFeature::class, ['id' => $id]);
     }
 
+    /**
+     * [index description]
+     *
+     * @return response
+     */
     public function index()
     {
         return $this->serve(GetUsersFeature::class);

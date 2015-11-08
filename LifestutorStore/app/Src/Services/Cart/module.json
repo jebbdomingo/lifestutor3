@@ -1,0 +1,7 @@
+{
+	"name": "Cart",
+	"slug": "cart",
+	"version": "1.0",
+	"description": "This is the description for the Cart module.",
+	"enabled": true
+}

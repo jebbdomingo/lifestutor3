@@ -12,7 +12,7 @@ use Services\Inventory\Resources\Views\Transformers\ItemTransformer;
 class RespondWithJsonJob extends AbstractJob
 {
     /**
-     * @var User
+     * @var Item
      */
     private $item;
 

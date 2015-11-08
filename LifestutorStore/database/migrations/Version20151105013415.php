@@ -24,6 +24,8 @@ class Version20151105013415 extends AbstractMigration
             $em->getClassMetadata('Services\User\Data\Roles\Role'),
             $em->getClassMetadata('Services\User\Data\Entities\User\User'),
             $em->getClassMetadata('Services\Inventory\Data\Entities\Item\Item'),
+            $em->getClassMetadata('Services\Cart\Data\Entities\Cart\Cart'),
+            $em->getClassMetadata('Services\Cart\Data\Entities\Cart\Item')
         );
 
         parent::__construct($version);

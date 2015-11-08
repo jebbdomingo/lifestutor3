@@ -8,8 +8,11 @@ use View;
 use Illuminate\Support\ServiceProvider;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Services\User\Data\Repositories\DoctrineUserRepository;
+use Services\User\Data\Repositories\DoctrineRoleRepository;
 use Services\User\Data\Repositories\UserRepository;
+use Services\User\Data\Repositories\RoleRepository;
 use Services\User\Data\Entities\User\User;
+use Services\User\Data\Roles\Role;
 
 class UserServiceProvider extends ServiceProvider
 {
@@ -27,10 +30,19 @@ class UserServiceProvider extends ServiceProvider
 
 		$this->registerNamespaces();
 
+		// Bind UserRepository
 		$this->app->bind(UserRepository::class, function($app) {
 			return new DoctrineUserRepository(
 				$app['em'],
 				new ClassMetaData(User::class)
+			);
+		});
+
+		// Bind Role Repository
+		$this->app->bind(RoleRepository::class, function($app) {
+			return new DoctrineRoleRepository(
+				$app['em'],
+				new ClassMetaData(Role::class)
 			);
 		});
 	}

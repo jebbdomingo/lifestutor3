@@ -62,5 +62,23 @@ class UserTableSeeder extends Seeder
                 'role_id' => 2,
             ]);
         }
+
+        /*
+         * Generate Carts for each User
+         */
+        DB::table('carts')->insert([
+            'user_id'     => 1,
+            'modified_on' => '2015-11-08 12:00:000'
+        ]);
+
+        foreach ($generatedUsers['Services\User\Data\Entities\User\User'] as $user) {
+            $generator = \Faker\Factory::create();
+            $populator = new Faker\ORM\Doctrine\Populator($generator, $em);
+            $populator->addEntity('Services\Cart\Data\Entities\Cart\Cart', 1, array(
+              'user' => $user
+            ));
+
+            $generatedUsers = $populator->execute();
+        }
     }
 }

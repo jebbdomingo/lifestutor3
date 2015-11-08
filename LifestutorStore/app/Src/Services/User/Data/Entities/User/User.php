@@ -10,6 +10,7 @@ use LaravelDoctrine\ACL\Mappings as ACL;
 use LaravelDoctrine\ACL\Contracts\HasRoles as HasRolesContract;
 
 use Foundation\Data\BaseEntity;
+use Services\User\Data\Roles\Role;
 
 /**
  * @ORM\Entity()
@@ -52,8 +53,23 @@ class User extends BaseEntity implements HasRolesContract
      */
     protected $roles;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Services\Cart\Data\Entities\Cart\Cart", mappedBy="user")
+     */
+    protected $cart;
+
+    /**
+     * [getRoles description]
+     *
+     * @return array
+     */
     public function getRoles()
     {
         return $this->roles;
+    }
+
+    public function addRole($role)
+    {
+        $this->roles[] = $role;
     }
 }
