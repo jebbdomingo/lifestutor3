@@ -1,4 +1,4 @@
-## LifesTutor3
+# LifesTutor3
 
 Example application implementing Microservices using Domain-driven Design and Lucid Architecture
 
