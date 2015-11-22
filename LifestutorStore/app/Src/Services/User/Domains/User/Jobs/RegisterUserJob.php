@@ -38,6 +38,8 @@ class RegisterUserJob extends AbstractJob
         $user->contact   = new Contact($this->email);
 
         // Add default Member Role
+        // 1 => Admin
+        // 2 => Member
         $role = $roleRepository->find(2);
         $user->addRole($role);
 

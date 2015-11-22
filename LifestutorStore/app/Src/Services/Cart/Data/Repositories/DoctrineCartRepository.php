@@ -6,12 +6,12 @@ use Doctrine\ORM\EntityRepository;
 
 class DoctrineCartRepository extends EntityRepository implements CartRepository
 {
-	public function get($id)
-	{
-		return $this->find($id);
-	}
+    public function get($id)
+    {
+        return $this->find($id);
+    }
 
-	/**
+    /**
      * [getBy description]
      *
      * @param  string $title
@@ -40,8 +40,8 @@ class DoctrineCartRepository extends EntityRepository implements CartRepository
      */
     public function create($cart)
     {
-    	$this->getEntityManager()->persist($cart);
-    	$this->getEntityManager()->flush();
+        $this->getEntityManager()->persist($cart);
+        $this->getEntityManager()->flush();
     }
 
     /**
@@ -52,5 +52,8 @@ class DoctrineCartRepository extends EntityRepository implements CartRepository
      * @return void
      */
     public function update($cart)
-    {}
+    {
+        $this->getEntityManager()->persist($cart);
+        $this->getEntityManager()->flush();
+    }
 }

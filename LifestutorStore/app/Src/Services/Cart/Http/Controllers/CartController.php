@@ -5,6 +5,7 @@ namespace Services\Cart\Http\Controllers;
 use Illuminate\Http\Request;
 use Foundation\Http\Controller;
 use Services\Cart\Features\CreateCartFeature;
+use Services\Cart\Features\AddItemFeature;
     /*Services\Cart\Features\UpdateCartFeature,
     Services\Cart\Features\GetCartFeature;*/
 
@@ -22,6 +23,16 @@ class CartController extends Controller
     public function store()
     {
         return $this->serve(CreateCartFeature::class);
+    }
+
+    /**
+     * [addItem description]
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addItem()
+    {
+        return $this->serve(AddItemFeature::class);
     }
 
     /**

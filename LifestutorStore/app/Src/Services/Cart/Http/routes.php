@@ -22,3 +22,7 @@ $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
     $api->post('carts', 'Services\Cart\Http\Controllers\CartController@store');
 });
+
+$api->version('v1', function ($api) {
+    $api->put('carts', 'Services\Cart\Http\Controllers\CartController@addItem');
+});
